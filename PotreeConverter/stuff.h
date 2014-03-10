@@ -127,11 +127,11 @@ AABB readAABB(string fIn){
 }
 
 /**
- *   y 
+ *   y
  *   |-z
  *   |/
  *   O----x
- *    
+ *
  *   3----7
  *  /|   /|
  * 2----6 |
@@ -148,28 +148,32 @@ AABB childAABB(const AABB &aabb, const int &index){
 	max = aabb.min + halfSize;
 
 	if(index == 0){
-		
+
 	}else if(index == 1){
-		min = min + Vector3(0,0,halfSize.z);
-		max = max + Vector3(0,0,halfSize.z);
+		Vector3 tmp = Vector3(0,0,halfSize.z);
+		min = min + tmp;
+		max = max + tmp;
 	}else if(index == 2){
-		min = min + Vector3(0, halfSize.y, 0);
+		Vector3 tmp = Vector3(0, halfSize.y, 0);
+		min = min + tmp;
 		max.y = aabb.max.y;
 	}else if(index == 3){
-		min = min + Vector3(0, halfSize.y, halfSize.z);
+		Vector3 tmp = Vector3(0, halfSize.y, halfSize.z);
+		min = min + tmp;
 		max.y = aabb.max.y;
 		max.z = aabb.max.z;
 	}else if(index == 4){
-		min = min + Vector3(halfSize.x, 0, 0);
-		max = max + Vector3(halfSize.x, 0, 0);
+		Vector3 tmp = Vector3(halfSize.x, 0, 0);
+		min = min + tmp;
+		max = max + tmp;
 	}else if(index == 5){
-		min = min + Vector3(halfSize.x, 0, halfSize.z);
-		//max = max + Vector3(halfSize.x, 0, halfSize.z);
+		Vector3 tmp = Vector3(halfSize.x, 0, halfSize.z);
+		min = min + tmp;
 		max.x = aabb.max.x;
 		max.z = aabb.max.z;
 	}else if(index == 6){
-		min = min + Vector3(halfSize.x, halfSize.y, 0);
-		//max = max + Vector3(halfSize.x, halfSize.y, 0);
+		Vector3 tmp = Vector3(halfSize.x, halfSize.y, 0);
+		min = min + tmp;
 		max.x = aabb.max.x;
 		max.y = aabb.max.y;
 	}else if(index == 7){
@@ -183,11 +187,11 @@ AABB childAABB(const AABB &aabb, const int &index){
 
 
 /**
- *   y 
+ *   y
  *   |-z
  *   |/
  *   O----x
- *    
+ *
  *   3----7
  *  /|   /|
  * 2----6 |
@@ -203,9 +207,9 @@ int nodeIndex(const AABB &aabb, const Point &point){
 			return i;
 		}
 	}
-	
+
 	return -1;
-	
+
 	//float x = (point.x - aabb.min.x) / aabb.size.x;
 	//float y = (point.y - aabb.min.y) / aabb.size.y;
 	//float z = (point.z - aabb.min.z) / aabb.size.z;
